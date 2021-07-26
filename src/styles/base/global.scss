@@ -1,0 +1,17 @@
+body {
+  background: $background;
+}
+.mainPage{
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+.eventPage{
+  position: relative;
+  display: grid;
+  grid-template-columns: (1fr 10fr 3fr);
+  padding-top: 25px;
+  height: 100vh;
+  overflow: hidden;
+}

@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto@1&family=Yeseva+One&display=swap');
+
+html {
+  font-size: 62.5%;
+  line-height: 1.25;
+  body {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+  }
+}
+
+h1{
+  font-family: 'Yeseva One';
+  font-size: 6rem;
+}
+
+p,
+a,
+span {
+  font-size: 1.4rem;
+}
+
+a {
+  font-weight: 600;
+}
