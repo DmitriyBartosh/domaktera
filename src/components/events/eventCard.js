@@ -3,7 +3,7 @@ import React from 'react'
 function EventBlock(props) {
 
   return (
-    <div className="eventCard" style={{ top: `${props.top}px` }} data-nav={props.data} id={props.id}>
+    <div className="eventCard" style={{ top: `${props.top}px`, left: `${props.left}px` }} data-nav={props.data} id={props.id}>
       <div className="date">
         
         <p className="day">{props.day}</p>

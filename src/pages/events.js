@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useWindowDimensions from '../hooks/useWindowDimensions'
 import Layout from '../layouts/Layout'
 import EventList from '../components/events/eventList'
@@ -8,6 +8,10 @@ import EventDescription from '../components/events/eventDescription'
 function Events() {
   const { width } = useWindowDimensions();
 
+  useEffect(() => {
+    
+  }, [])
+  
   return (
     <Layout blockClass="eventPage">
       <EventDescription />

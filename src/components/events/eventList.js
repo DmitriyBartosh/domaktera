@@ -28,7 +28,7 @@ function EventList() {
     
     ActiveIdPoster(posterBlock[0].id);
 
-    window.addEventListener('wheel', (e) => {
+    const scrollEvent = (e) => {
       speed += e.deltaY * 0.001;
       if(e.deltaY < 0 && rounded <= 1){
         attractTo = 0;
@@ -41,7 +41,9 @@ function EventList() {
       else{
         attractMode = false;
       }
-    })
+    }  
+
+    window.addEventListener('wheel', scrollEvent);
 
     function raf() {
       position += speed;
@@ -84,6 +86,11 @@ function EventList() {
         attractTo = Number(el.getAttribute('data-nav'));
       })
     })
+
+
+    return () => {
+      window.removeEventListener('wheel', scrollEvent);
+    }
 
   }, [totalCount, idChangeDispatch])
 
