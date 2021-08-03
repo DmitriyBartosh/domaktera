@@ -14,8 +14,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `data`,
-        path: `${__dirname}/src/images/`,
+        name: `photointro`,
+        path: `${__dirname}/src/images/photointro/`,
       },
     },
     "gatsby-plugin-sass",

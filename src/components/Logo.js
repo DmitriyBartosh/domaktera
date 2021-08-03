@@ -1,7 +1,7 @@
 import { Link } from 'gatsby'
 import React from 'react'
 
-import LogoSvg from '../../images/logo/white.svg'
+import LogoSvg from '../images/logo/white.svg'
 
 function eventLogo() {
   return (

@@ -1,0 +1,128 @@
+.mainPage {
+  position: relative;
+
+  .intro {
+    display: grid;
+    grid-template-columns: 120px 4fr 6fr 60px;
+    grid-template-rows: calc(100vh - 25px);
+    padding-top: 25px;
+    .banner {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      &__title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 60%;
+        .line,
+        p {
+          width: 60%;
+          text-align: left;
+        }
+        .line {
+          z-index: 12;
+          mix-blend-mode: difference;
+          overflow: hidden;
+          h1 {
+            letter-spacing: 4px;
+            line-height: 6.5rem;
+          }
+        }
+        p {
+          line-height: 2rem;
+          margin-top: 25px;
+        }
+      }
+      &__links {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 60%;
+        height: 40%;
+        p,
+        a {
+          position: relative;
+          letter-spacing: 0.5px;
+          color: $orange;
+        }
+        a:nth-child(1) {
+          top: -50px;
+        }
+        p:nth-child(3) {
+          bottom: -50px;
+        }
+      }
+    }
+    .posters {
+      position: relative;
+      height: 100%;
+      &__block {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: (20% 50% 30%);
+        height: 100%;
+        width: 100%;
+        .post {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          .gatsby-image-wrapper {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
+        }
+        .post.one {
+          grid-area: 1/1/2/6;
+        }
+        .post.two {
+          grid-area: 1/6/2/9;
+        }
+        .post.three {
+          grid-area: 2/1/3/4;
+        }
+        .post.four {
+          grid-area: 2/4/3/9;
+        }
+        .post.five {
+          grid-area: 3/1/4/3;
+        }
+        .post.six {
+          grid-area: 3/3/4/9;
+        }
+      }
+    }
+    .menu {
+      position: relative;
+      width: 60px;
+      height: 100%;
+      &__button {
+        width: 100%;
+        height: 60px;
+        background: $red;
+      }
+      &__events {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: calc(100% - 60px);
+        background: $orange;
+        p {
+          text-transform: uppercase;
+          writing-mode: vertical-lr;
+          letter-spacing: 1px;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

@@ -1,560 +1,526 @@
-.eventList {
+.eventPage {
   position: relative;
-  display: flex;
-  align-items: center;
-  background: $red;
-  height: 100%;
+  display: grid;
+  grid-template-columns: (120px 10fr 3fr);
+  padding-top: 25px;
+  height: 100vh;
   overflow: hidden;
   @media (max-width: $layout-breakpoint-tablet) {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    width: 100%;
-    z-index: 20;
-  }
-  @media (max-width: $layout-breakpoint-mobile) {
-    height: 70px;
-  }
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 120px;
-    width: 100%;
-    background: $orange;
-    @media (max-width: $layout-breakpoint-tablet) {
-      top: 0;
-      left: 0;
-      right: auto;
-      bottom: 0;
-      height: 100%;
-      width: 100px;
-    }
-    @media (max-width: $layout-breakpoint-mobile) {
-      left: calc(50% - 50px);
-    }
-  }
-  .eventContainer {
-    position: relative;
     display: flex;
     flex-direction: column;
+    overflow: auto;
+    padding-top: 0px;
+  }
+  .eventList {
+    position: relative;
+    display: flex;
     align-items: center;
-    width: 100%;
-    height: inherit;
+    background: $red;
+    height: 100%;
+    overflow: hidden;
     @media (max-width: $layout-breakpoint-tablet) {
-      flex-direction: row;
-    }
-    .eventBack {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      padding: 0 20px;
-      width: calc(50% - 50px);
-      svg {
-        height: 20px;
-        width: 20px;
-        margin-bottom: 5;
-      }
-      p {
-        font-size: 1.25rem;
-        line-height: 1.25rem;
-        text-align: center;
-      }
-    }
-    .eventCard {
-      position: absolute;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      height: 120px;
-      cursor: pointer;
-      user-select: none;
-      @media (max-width: $layout-breakpoint-tablet) {
-        height: 100%;
-        width: 100px;
-      }
-      &:hover {
-        background: $orange;
-        @media (max-width: $layout-breakpoint-tablet) {
-          background: transparent;
-        }
-      }
-      .date {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 35%;
-        height: 100%;
-        @media (max-width: $layout-breakpoint-tablet) {
-          width: 100%;
-        }
-        &::after {
-          content: "";
-          position: absolute;
-          right: 0;
-          top: 0;
-          border: 12px solid transparent;
-          border-top: 12px solid rgb(139, 14, 14);
-          border-right: 12px solid rgb(139, 14, 14);
-          @media (max-width: $layout-breakpoint-tablet) {
-            border: 8px solid transparent;
-            border-top: 8px solid rgb(139, 14, 14);
-            border-right: 8px solid rgb(139, 14, 14);
-          }
-        }
-        .polygon {
-          position: absolute;
-          top: 0;
-          left: 0;
-        }
-        .day {
-          font-family: "Yeseva One";
-          font-size: 4.5rem;
-          line-height: 4rem;
-          @media (max-width: $layout-breakpoint-medium) {
-            font-size: 3rem;
-            line-height: 2.5rem;
-          }
-          @media (max-width: $layout-breakpoint-mobile) {
-            font-size: 2.5rem;
-            line-height: 2.5rem;
-          }
-        }
-        .month {
-          font-family: "Yeseva One";
-          font-size: 2rem;
-          text-transform: lowercase;
-          @media (max-width: $layout-breakpoint-medium) {
-            font-size: 1.5rem;
-          }
-          @media (max-width: $layout-breakpoint-mobile) {
-            font-size: 1.25rem;
-          }
-        }
-        .time {
-          p {
-            font-size: 1.5rem;
-            line-height: 1.75rem;
-            @media (max-width: $layout-breakpoint-medium) {
-              font-size: 1rem;
-              line-height: 1.25rem;
-            }
-          }
-        }
-      }
-      .info {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        justify-content: center;
-        padding-right: 30px;
-        padding-left: 15px;
-        width: 65%;
-        @media (max-width: $layout-breakpoint-medium) {
-          font-size: 1.25rem;
-          line-height: 1.75rem;
-        }
-        @media (max-width: $layout-breakpoint-tablet) {
-          display: none;
-        }
-        .title {
-          text-transform: uppercase;
-          font-size: 1.5rem;
-          line-height: 1.75rem;
-          text-align: right;
-          margin-bottom: 5px;
-          @media (max-width: $layout-breakpoint-medium) {
-            font-size: 1.25rem;
-            line-height: 1.5rem;
-          }
-        }
-        p {
-          margin: 2px 0px;
-          opacity: 0.9;
-          @media (max-width: $layout-breakpoint-medium) {
-            font-size: 1rem;
-            line-height: 1rem;
-          }
-        }
-      }
-    }
-  }
-}
-.eventDescription {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  .backgroundDesc {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    transition: all 0.3s;
-  }
-  .eventHeader {
-    display: grid;
-    grid-template-columns: (5fr 3fr 1fr);
-    background: $orange;
-    height: 120px;
-    padding: 10px 10px 10px 50px;
-    border-right: 2px dashed white;
-    @media (max-width: $layout-breakpoint-medium) {
-      padding: 10px 30px;
-    }
-    @media (max-width: $layout-breakpoint-tablet) {
-      grid-template-columns: (50px 4fr 1fr 2fr);
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
       height: 80px;
       width: 100%;
-      border-right: none;
-      padding: 0px 0px 0px 15px;
+      z-index: 20;
     }
     @media (max-width: $layout-breakpoint-mobile) {
-      grid-template-columns: (55px 5fr 2fr);
-      position: fixed;
+      height: 70px;
+    }
+    &::before {
+      content: "";
+      position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      z-index: 15;
-      padding: 0;
-    }
-    .eventTitle {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
+      height: 120px;
+      width: 100%;
+      background: $orange;
       @media (max-width: $layout-breakpoint-tablet) {
-        padding: 0px 10px;
+        top: 0;
+        left: 0;
+        right: auto;
+        bottom: 0;
+        height: 100%;
+        width: 100px;
       }
-      h1 {
-        font-size: 3rem;
-        line-height: 3.5rem;
-        @media (max-width: $layout-breakpoint-medium) {
-          font-size: 2.5rem;
-          line-height: 3rem;
-        }
-        @media (max-width: $layout-breakpoint-tablet) {
-          font-size: 2.25rem;
-          line-height: 2rem;
-        }
-        @media (max-width: $layout-breakpoint-mobile) {
-          font-size: 1.5rem;
-          line-height: 1.75rem;
-        }
-      }
-      p {
-        opacity: 0.9;
-        margin-top: 4px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        @media (max-width: $layout-breakpoint-tablet) {
-          font-size: 1rem;
-        }
-      }
-    }
-    .ticketInfo {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      justify-content: center;
-      p {
-        text-align: right;
-        margin: 5px;
-        line-height: 1.75rem;
-        letter-spacing: 0.5px;
-        @media (max-width: $layout-breakpoint-medium) {
-          font-size: 1.25rem;
-          line-height: 1.5rem;
-        }
-        &:nth-child(1) {
-          font-weight: 600;
-        }
-      }
-      @media (max-width: $layout-breakpoint-tablet) {
-        display: none;
-      }
-    }
-    .ageInfo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
       @media (max-width: $layout-breakpoint-mobile) {
-        display: none;
-      }
-      p {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 55px;
-        width: 55px;
-        border: 2px solid white;
-        border-radius: 50%;
-        @media (max-width: $layout-breakpoint-medium) {
-          border: 1px solid white;
-          height: 45px;
-          width: 45px;
-        }
-        @media (max-width: $layout-breakpoint-tablet) {
-          margin-right: 15px;
-        }
-      }
-      p {
-        font-size: 2rem;
-        @media (max-width: $layout-breakpoint-medium) {
-          font-size: 1.5rem;
-        }
+        left: calc(50% - 50px);
       }
     }
-    .eventInfoMobile {
-      display: none;
+    .eventContainer {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      height: inherit;
       @media (max-width: $layout-breakpoint-tablet) {
+        flex-direction: row;
+      }
+      .eventBack {
+        position: absolute;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         height: 100%;
-        border-left: 1px dashed white;
+        padding: 0 20px;
+        width: calc(50% - 50px);
+        svg {
+          height: 20px;
+          width: 20px;
+          margin-bottom: 5;
+        }
+        p {
+          font-size: 1.25rem;
+          line-height: 1.25rem;
+          text-align: center;
+        }
       }
-      &__date {
+      .eventCard {
+        position: absolute;
         display: flex;
         align-items: center;
-        @media (max-width: $layout-breakpoint-mobile) {
-          flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        height: 120px;
+        cursor: pointer;
+        user-select: none;
+        @media (max-width: $layout-breakpoint-tablet) {
+          height: 100%;
+          width: 100px;
         }
-        .day {
-          display: flex;
-          align-items: center;
-          margin-right: 8px;
-          font-family: "Yeseva One";
-          @media (max-width: $layout-breakpoint-mobile) {
-            margin-right: 4px;
+        &:hover {
+          background: $orange;
+          @media (max-width: $layout-breakpoint-tablet) {
+            background: transparent;
           }
-          p {
+        }
+        .date {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 35%;
+          height: 100%;
+          @media (max-width: $layout-breakpoint-tablet) {
+            width: 100%;
+          }
+          &::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            border: 12px solid transparent;
+            border-top: 12px solid rgb(139, 14, 14);
+            border-right: 12px solid rgb(139, 14, 14);
+            @media (max-width: $layout-breakpoint-tablet) {
+              border: 8px solid transparent;
+              border-top: 8px solid rgb(139, 14, 14);
+              border-right: 8px solid rgb(139, 14, 14);
+            }
+          }
+          .polygon {
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+          .day {
+            font-family: "Yeseva One";
             font-size: 4.5rem;
-            line-height: 40px;
+            line-height: 4rem;
+            @media (max-width: $layout-breakpoint-medium) {
+              font-size: 3rem;
+              line-height: 2.5rem;
+            }
             @media (max-width: $layout-breakpoint-mobile) {
               font-size: 2.5rem;
               line-height: 2.5rem;
             }
           }
-        }
-        .monthWeek {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          padding-bottom: 2px;
-          height: 100%;
-          p {
-            font-size: 1.75rem;
-            line-height: 2rem;
-            text-transform: lowercase;
-            margin: 0 2px;
-            @media (max-width: $layout-breakpoint-mobile) {
-              font-size: 1.25rem;
-              line-height: 1.25rem;
-            }
-          }
           .month {
             font-family: "Yeseva One";
+            font-size: 2rem;
+            text-transform: lowercase;
+            @media (max-width: $layout-breakpoint-medium) {
+              font-size: 1.5rem;
+            }
+            @media (max-width: $layout-breakpoint-mobile) {
+              font-size: 1.25rem;
+            }
           }
           .time {
-            display: flex;
-            align-items: center;
             p {
               font-size: 1.5rem;
-              @media (max-width: $layout-breakpoint-mobile) {
+              line-height: 1.75rem;
+              @media (max-width: $layout-breakpoint-medium) {
                 font-size: 1rem;
                 line-height: 1.25rem;
               }
             }
           }
         }
+        .info {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          justify-content: center;
+          padding-right: 30px;
+          padding-left: 15px;
+          width: 65%;
+          @media (max-width: $layout-breakpoint-medium) {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+          }
+          @media (max-width: $layout-breakpoint-tablet) {
+            display: none;
+          }
+          .title {
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            line-height: 1.75rem;
+            text-align: right;
+            margin-bottom: 5px;
+            @media (max-width: $layout-breakpoint-medium) {
+              font-size: 1.25rem;
+              line-height: 1.5rem;
+            }
+          }
+          p {
+            margin: 2px 0px;
+            opacity: 0.9;
+            @media (max-width: $layout-breakpoint-medium) {
+              font-size: 1rem;
+              line-height: 1rem;
+            }
+          }
+        }
       }
     }
   }
-  .eventInfo {
+  .eventDescription {
+    position: relative;
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: 20px 50px;
-    height: calc(100% - 140px);
-    @media (max-width: $layout-breakpoint-medium) {
-      padding: 10px 30px;
+    flex-direction: column;
+    .backgroundDesc {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      transition: all 0.3s;
     }
-    @media (max-width: $layout-breakpoint-tablet) {
-      flex-direction: column-reverse;
-      padding: 0px;
-      height: 100%;
-    }
-    &__about {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      padding: 50px 0px;
-      width: 60%;
-      max-width: 500px;
-      height: 100%;
+    .eventHeader {
+      display: grid;
+      grid-template-columns: (5fr 3fr 1fr);
+      background: $orange;
+      height: 120px;
+      padding: 10px 10px 10px 50px;
+      border-right: 2px dashed white;
+      @media (max-width: $layout-breakpoint-medium) {
+        padding: 10px 30px;
+      }
       @media (max-width: $layout-breakpoint-tablet) {
+        grid-template-columns: (50px 4fr 1fr 2fr);
+        height: 80px;
         width: 100%;
-        max-width: none;
-        padding: 10px 60px 100px 60px;
+        border-right: none;
+        padding: 0px 0px 0px 15px;
       }
       @media (max-width: $layout-breakpoint-mobile) {
-        padding: 25px 15px 25px 25px;
-        height: auto;
-        margin-bottom: 170px;
+        grid-template-columns: (55px 5fr 2fr);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 15;
+        padding: 0;
       }
-      .textInfo {
-        padding-right: 60px;
-        @media (max-width: $layout-breakpoint-tablet) {
-          padding: 0px;
-        }
-        p {
-          font-size: 1.5rem;
-          line-height: 2rem;
-          letter-spacing: 0.5px;
-          margin-bottom: 15px;
-          @media (max-width: $layout-breakpoint-medium) {
-            font-size: 1.25rem;
-            line-height: 1.75rem;
-          }
-        }
-      }
-      .actorsTitle {
-        margin-top: 50px;
-        font-size: 1.75rem;
-        line-height: 2rem;
-        @media (max-width: $layout-breakpoint-medium) {
-          font-size: 1.5rem;
-          line-height: 1.75rem;
-        }
-        @media (max-width: $layout-breakpoint-tablet) {
-          margin-top: 20px;
-        }
-      }
-      .actors {
+      .eventTitle {
+        position: relative;
         display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        margin-top: 10px;
-        p {
-          margin-right: 5px;
-          font-size: 1.5rem;
-          line-height: 2rem;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        @media (max-width: $layout-breakpoint-tablet) {
+          padding: 0px 10px;
+        }
+        h1 {
+          font-size: 3rem;
+          line-height: 3.5rem;
           @media (max-width: $layout-breakpoint-medium) {
-            font-size: 1.25rem;
+            font-size: 2.5rem;
+            line-height: 3rem;
+          }
+          @media (max-width: $layout-breakpoint-tablet) {
+            font-size: 2.25rem;
+            line-height: 2rem;
+          }
+          @media (max-width: $layout-breakpoint-mobile) {
+            font-size: 1.5rem;
             line-height: 1.75rem;
           }
         }
-      }
-      .ticketInfoMobile {
-        margin-top: 30px;
         p {
-          font-size: 1.25rem;
+          opacity: 0.9;
+          margin-top: 4px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          @media (max-width: $layout-breakpoint-tablet) {
+            font-size: 1rem;
+          }
+        }
+      }
+      .ticketInfo {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        p {
+          text-align: right;
+          margin: 5px;
           line-height: 1.75rem;
           letter-spacing: 0.5px;
-          margin-bottom: 5px;
+          @media (max-width: $layout-breakpoint-medium) {
+            font-size: 1.25rem;
+            line-height: 1.5rem;
+          }
           &:nth-child(1) {
             font-weight: 600;
           }
         }
+        @media (max-width: $layout-breakpoint-tablet) {
+          display: none;
+        }
       }
-    }
-    &__poster {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 10px;
-      width: 40%;
-      height: 100%;
-      @media (max-width: $layout-breakpoint-tablet) {
-        width: 100%;
-        height: 760px;
-        padding: 30px 60px;
-      }
-      @media (max-width: $layout-breakpoint-mobile) {
-        padding: 0px;
-        height: auto;
-        margin-top: 80px;
-      }
-      .photo {
-        width: 100%;
-        max-height: 100%;
+      .ageInfo {
         display: flex;
         align-items: center;
         justify-content: center;
-        overflow: hidden;
-        .gatsby-image-wrapper {
+        @media (max-width: $layout-breakpoint-mobile) {
+          display: none;
+        }
+        p {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 55px;
+          width: 55px;
+          border: 2px solid white;
+          border-radius: 50%;
+          @media (max-width: $layout-breakpoint-medium) {
+            border: 1px solid white;
+            height: 45px;
+            width: 45px;
+          }
           @media (max-width: $layout-breakpoint-tablet) {
-            width: 600px;
+            margin-right: 15px;
+          }
+        }
+        p {
+          font-size: 2rem;
+          @media (max-width: $layout-breakpoint-medium) {
+            font-size: 1.5rem;
+          }
+        }
+      }
+      .eventInfoMobile {
+        display: none;
+        @media (max-width: $layout-breakpoint-tablet) {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          border-left: 1px dashed white;
+        }
+        &__date {
+          display: flex;
+          align-items: center;
+          @media (max-width: $layout-breakpoint-mobile) {
+            flex-direction: column;
+          }
+          .day {
+            display: flex;
+            align-items: center;
+            margin-right: 8px;
+            font-family: "Yeseva One";
+            @media (max-width: $layout-breakpoint-mobile) {
+              margin-right: 4px;
+            }
+            p {
+              font-size: 4.5rem;
+              line-height: 40px;
+              @media (max-width: $layout-breakpoint-mobile) {
+                font-size: 2.5rem;
+                line-height: 2.5rem;
+              }
+            }
+          }
+          .monthWeek {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 2px;
+            height: 100%;
+            p {
+              font-size: 1.75rem;
+              line-height: 2rem;
+              text-transform: lowercase;
+              margin: 0 2px;
+              @media (max-width: $layout-breakpoint-mobile) {
+                font-size: 1.25rem;
+                line-height: 1.25rem;
+              }
+            }
+            .month {
+              font-family: "Yeseva One";
+            }
+            .time {
+              display: flex;
+              align-items: center;
+              p {
+                font-size: 1.5rem;
+                @media (max-width: $layout-breakpoint-mobile) {
+                  font-size: 1rem;
+                  line-height: 1.25rem;
+                }
+              }
+            }
           }
         }
       }
     }
-  }
-}
-
-.logoNav {
-  position: relative;
-  a {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 120px;
-    width: 100%;
-    z-index: 10;
-    @media (max-width: $layout-breakpoint-tablet) {
-      height: 100%;
-    }
-    img {
-      max-width: 45%;
-      min-width: 50px;
-      @media (max-width: $layout-breakpoint-mobile) {
-        max-width: none;
-        min-width: auto;
-        width: 40px;
+    .eventInfo {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 20px 50px;
+      height: calc(100% - 140px);
+      @media (max-width: $layout-breakpoint-medium) {
+        padding: 10px 30px;
       }
-    }
-  }
-  .line {
-    position: absolute;
-    border-right: 1px solid white;
-    border-left: 2px solid white;
-    width: 30px;
-    height: calc(100% + 25px);
-    top: -25px;
-    left: 35%;
-    opacity: 0.3;
-    @media (max-width: $layout-breakpoint-tablet) {
-      position: fixed;
-      top: -0px;
-      left: 25px;
-      height: 100%;
-    }
-    @media (max-width: $layout-breakpoint-mobile) {
-      border-right: 0.5px solid white;
-      border-left: 1px solid white;
-      opacity: 0.5;
-      left: 15px;
-      width: 25px;
+      @media (max-width: $layout-breakpoint-tablet) {
+        flex-direction: column-reverse;
+        padding: 0px;
+        height: 100%;
+      }
+      &__about {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 50px 0px;
+        width: 60%;
+        max-width: 500px;
+        height: 100%;
+        @media (max-width: $layout-breakpoint-tablet) {
+          width: 100%;
+          max-width: none;
+          padding: 10px 60px 100px 60px;
+        }
+        @media (max-width: $layout-breakpoint-mobile) {
+          padding: 25px 15px 25px 25px;
+          height: auto;
+          margin-bottom: 170px;
+        }
+        .textInfo {
+          padding-right: 60px;
+          @media (max-width: $layout-breakpoint-tablet) {
+            padding: 0px;
+          }
+          p {
+            font-size: 1.5rem;
+            line-height: 2rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            @media (max-width: $layout-breakpoint-medium) {
+              font-size: 1.25rem;
+              line-height: 1.75rem;
+            }
+          }
+        }
+        .actorsTitle {
+          margin-top: 50px;
+          font-size: 1.75rem;
+          line-height: 2rem;
+          @media (max-width: $layout-breakpoint-medium) {
+            font-size: 1.5rem;
+            line-height: 1.75rem;
+          }
+          @media (max-width: $layout-breakpoint-tablet) {
+            margin-top: 20px;
+          }
+        }
+        .actors {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          margin-top: 10px;
+          p {
+            margin-right: 5px;
+            font-size: 1.5rem;
+            line-height: 2rem;
+            @media (max-width: $layout-breakpoint-medium) {
+              font-size: 1.25rem;
+              line-height: 1.75rem;
+            }
+          }
+        }
+        .ticketInfoMobile {
+          margin-top: 30px;
+          p {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+            &:nth-child(1) {
+              font-weight: 600;
+            }
+          }
+        }
+      }
+      &__poster {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 10px;
+        width: 40%;
+        height: 100%;
+        @media (max-width: $layout-breakpoint-tablet) {
+          width: 100%;
+          height: 760px;
+          padding: 30px 60px;
+        }
+        @media (max-width: $layout-breakpoint-mobile) {
+          padding: 0px;
+          height: auto;
+          margin-top: 80px;
+        }
+        .photo {
+          width: 100%;
+          max-height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          .gatsby-image-wrapper {
+            @media (max-width: $layout-breakpoint-tablet) {
+              width: 600px;
+            }
+          }
+        }
+      }
     }
   }
 }

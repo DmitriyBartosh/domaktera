@@ -4,7 +4,7 @@ import { useEventData } from './useEventData'
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 import { getImage, GatsbyImage } from 'gatsby-plugin-image'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
-import EventLogo from './eventLogo'
+import EventLogo from '../Logo'
 
 function EventDescription() {
   const idPoster = useSelector((state) => state.posterId.posterId);

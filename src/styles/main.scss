@@ -3,8 +3,9 @@
 @import "base/reset";
 @import "base/typography";
 
-// Компоненты
-@import "components/title";
-@import "components/posters";
-@import "components/menu";
+// Страницы 
+@import "components/mainpage";
 @import "components/events";
+
+// Компоненты
+@import "components/logo.scss";

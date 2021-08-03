@@ -1,0 +1,47 @@
+.logoNav {
+  position: relative;
+  a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    width: 100%;
+    z-index: 10;
+    @media (max-width: $layout-breakpoint-tablet) {
+      height: 100%;
+    }
+    img {
+      max-width: 45%;
+      min-width: 50px;
+      @media (max-width: $layout-breakpoint-mobile) {
+        max-width: none;
+        min-width: auto;
+        width: 40px;
+      }
+    }
+  }
+  .line {
+    position: absolute;
+    border-right: 1px solid white;
+    border-left: 2px solid white;
+    width: 36px;
+    height: calc(100% + 25px);
+    top: -25px;
+    left: 35%;
+    opacity: 0.3;
+    @media (max-width: $layout-breakpoint-tablet) {
+      position: fixed;
+      top: -0px;
+      left: 25px;
+      height: 100%;
+    }
+    @media (max-width: $layout-breakpoint-mobile) {
+      border-right: 0.5px solid white;
+      border-left: 1px solid white;
+      opacity: 0.5;
+      left: 15px;
+      width: 25px;
+    }
+  }
+}

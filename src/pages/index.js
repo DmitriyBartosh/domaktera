@@ -1,16 +1,14 @@
 import * as React from "react"
 import Layout from '../layouts/Layout'
-import Title from '../components/Title'
-import Posters from "../components/Posters"
-import Menu from "../components/Menu"
+import Main from '../components/main/Main'
 
 const IndexPage = () => {
 
   return (
     <Layout blockClass="mainPage">
-      <Title />
-      <Posters />
-      <Menu />
+      <div className="intro">
+        <Main />
+      </div>
     </Layout>
   )
 }
