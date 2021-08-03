@@ -61,7 +61,7 @@ typings/
 .cache
 
 # config
-.gatsby-config.js
+gatsby-config.js
 
 # next.js build output
 .next
