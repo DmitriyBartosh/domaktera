@@ -16,8 +16,6 @@ function Posters() {
         const { id, date, poster_image } = posters;
         const imgSrc = getImage(poster_image);
 
-        const classImgGrid = ['one', 'two', 'three', 'four', 'five', 'six'];
-
         if ((Date.parse(date) > Date.parse(dateNow)) && indexPosters < 1) {
           indexPosters++;
 
