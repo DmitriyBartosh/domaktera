@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useStaticQuery, graphql } from "gatsby"
 import { motion, AnimatePresence } from 'framer-motion'
+import { IoAddOutline } from "react-icons/io5";
 import Persons from './Persons'
 
 function About() {
@@ -40,8 +41,8 @@ function About() {
             <div className="leftColumn">
               <p>- {index + 1}.</p>
             </div>
-            <div className="rightColumn pointer" onClick={() => setExpanded(isOpen ? false : index)}>
-              <p className="infoTitle">{frontmatter.title}</p>
+            <div className="rightColumn">
+              <p className="infoTitle pointer" onClick={() => setExpanded(isOpen ? false : index)}>{frontmatter.title}<IoAddOutline style={isOpen ? {transform: 'rotateZ(45deg)'} : {transform: 'rotateZ(0deg)'}}/></p>
               <AnimatePresence initial={false}>
                 {isOpen && (
                   <motion.div 

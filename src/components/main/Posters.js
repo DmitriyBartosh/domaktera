@@ -9,7 +9,7 @@ function Posters() {
 
   const photo = useStaticQuery(graphql`
     {
-      allFile(filter: {sourceInstanceName: {eq: "photointro"}}) {
+      allFile(filter: {sourceInstanceName: {eq: "photointro"}}, sort: {fields: name}) {
         nodes {
           id
           childrenImageSharp {
