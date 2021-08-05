@@ -8,7 +8,6 @@ import EventCard from './eventCard'
 
 function EventMobileList() {
   var dateNow = new Date();
-  var indexElement = 0;
   const { width } = useWindowDimensions();
   const { nodes } = useEventData();
   const idChangeDispatch = useDispatch();
@@ -49,19 +48,18 @@ function EventMobileList() {
       movePoint = (Math.round(startPoint) - Math.round(e.changedTouches[0].pageX));
 
       if (movePoint > 100 || movePoint < -100) {
-        speed += (Math.sign(movePoint) * 350 - Math.sign(movePoint) * 50) * 0.001;
-      }
-
-      if (movePoint < 100 && rounded < 1) {
-        attractTo = 0;
-        attractMode = true;
-      }
-      else if (movePoint > 100 && rounded >= posterCount) {
-        attractTo = posterCount - 1;
-        attractMode = true;
-      }
-      else {
-        attractMode = false;
+        if (movePoint < 100 && rounded < 1) {
+          attractTo = 0;
+          attractMode = true;
+        }
+        else if (movePoint > 100 && rounded > posterCount - 3) {
+          attractTo = posterCount - 2;
+          attractMode = true;
+        }
+        else {
+          speed += (Math.sign(movePoint) * 350 - Math.sign(movePoint) * 50) * 0.001;
+          attractMode = false;
+        }
       }
     })
 
@@ -114,7 +112,7 @@ function EventMobileList() {
   return (
     <div className="eventList">
       <div className="eventContainer">
-        {nodes.map(event => {
+        {nodes.map((event, index) => {
           const { id, title, date, genre, duration } = event;
 
           if ((Date.parse(date) > Date.parse(dateNow))) {
@@ -128,11 +126,8 @@ function EventMobileList() {
             const monthName = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
             const weekName = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
 
-
-            indexElement++;
-
             return (
-              <EventCard day={day < 10 ? '0' + day : '' + day} month={monthName[month]} title={title} key={id} genre={genre} duration={duration} time={time} week={weekName[weekDay]} left={(indexElement - 1) * 100} data={indexElement - 1} id={id} />
+              <EventCard day={day < 10 ? '0' + day : '' + day} month={monthName[month]} title={title} key={id} genre={genre} duration={duration} time={time} week={weekName[weekDay]} left={(index) * 100} data={index} id={id} />
             )
           }
           else {

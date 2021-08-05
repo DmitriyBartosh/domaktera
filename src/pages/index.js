@@ -1,6 +1,7 @@
 import * as React from "react"
 import Layout from '../layouts/Layout'
 import Main from '../components/main/Main'
+import About from '../components/about/About'
 
 const IndexPage = () => {
 
@@ -9,6 +10,7 @@ const IndexPage = () => {
       <div className="intro">
         <Main />
       </div>
+      <About />
     </Layout>
   )
 }

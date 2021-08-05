@@ -1,17 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto@1&family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&family=Yeseva+One&display=swap');
 
 html {
   font-size: 62.5%;
   line-height: 1.25;
   body {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     color: white;
   }
 }
 
-h1{
-  font-family: 'Yeseva One';
-  font-size: 6rem;
+h1 {
+  font-family: 'Yeseva One', serif;
+  font-size: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 4rem;
+  @media (max-width: $layout-breakpoint-medium) {
+    font-size: 3rem;
+    letter-spacing: 1px;
+    line-height: 3rem;
+  }
+  @media (max-width: $layout-breakpoint-mobile) {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    line-height: 2rem;
+  }
 }
 
 p,

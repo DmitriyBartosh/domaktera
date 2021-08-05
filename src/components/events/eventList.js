@@ -7,7 +7,6 @@ import EventCard from './eventCard'
 
 function EventList() {
   var dateNow = new Date();
-  var indexElement = 0;
   const { nodes, totalCount } = useEventData();
   const idChangeDispatch = useDispatch();
 
@@ -97,7 +96,7 @@ function EventList() {
   return (
     <div className="eventList">
       <div className="eventContainer">
-        {nodes.map(event => {
+        {nodes.map((event, index) => {
           const { id, title, date, genre, duration } = event;
 
           if ((Date.parse(date) > Date.parse(dateNow))) {
@@ -111,11 +110,8 @@ function EventList() {
             const monthName = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
             const weekName = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
 
-
-            indexElement++;
-
             return (
-              <EventCard day={day < 10 ? '0' + day : '' + day} month={monthName[month]} title={title} key={id} genre={genre} duration={duration} time={time} week={weekName[weekDay]} top={(indexElement - 1) * 140} data={indexElement - 1} id={id} />
+              <EventCard day={day < 10 ? '0' + day : '' + day} month={monthName[month]} title={title} key={id} genre={genre} duration={duration} time={time} week={weekName[weekDay]} top={(index) * 140} data={index} id={id} />
             )
           }
           else {

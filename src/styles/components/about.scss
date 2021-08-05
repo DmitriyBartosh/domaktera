@@ -1,0 +1,176 @@
+.aboutTheatre {
+  padding-left: 120px;
+  padding-top: 100px;
+  padding-bottom: 20px;
+  @media (max-width: $layout-breakpoint-tablet) {
+    padding-left: 80px;
+  }
+  @media (max-width: $layout-breakpoint-mobile) {
+    padding-left: 0px;
+  }
+  &__column {
+    display: grid;
+    grid-template-columns: 4fr 5fr;
+    padding: 20px;
+    @media (max-width: $layout-breakpoint-tablet) {
+      grid-template-columns: 80px 1fr;
+    }
+    @media (max-width: $layout-breakpoint-mobile) {
+      grid-template-columns: 70px 1fr;
+      padding: 20px 10px 15px 43px;
+    }
+    .leftColumn {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 50px;
+      @media (max-width: $layout-breakpoint-tablet) {
+        padding-right: 30px;
+      }
+      @media (max-width: $layout-breakpoint-mobile) {
+        padding-right: 15px;
+      }
+      p {
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+        @media (max-width: $layout-breakpoint-mobile) {
+          font-size: 1.25rem;
+          line-height: 1.5rem;
+        }
+      }
+    }
+    .rightColumn {
+      max-width: 600px;
+      &.pointer {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .infoName {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        text-transform: uppercase;
+        @media (max-width: $layout-breakpoint-mobile) {
+          line-height: 1.75rem;
+        }
+      }
+      .infoTitle {
+        margin-bottom: 20px;
+      }
+      .infoDescription {
+        position: relative;
+        overflow: hidden;
+        @media (max-width: $layout-breakpoint-mobile) {
+          width: 125%;
+          right: 25%;
+        }
+        p {
+          font-size: 1.5rem;
+          line-height: 2rem;
+          @media (max-width: $layout-breakpoint-mobile) {
+            font-size: 1.25rem;
+            line-height: 1.5rem;
+          }
+        }
+        ul {
+          li {
+            font-size: 1.5rem;
+            line-height: 2rem;
+            margin-left: 18px;
+            list-style-type: circle;
+            @media (max-width: $layout-breakpoint-mobile) {
+              font-size: 1.25rem;
+              line-height: 1.75rem;
+              list-style-type: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .persons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 150px 20px 120px 20px;
+    @media (max-width: $layout-breakpoint-tablet) {
+      flex-wrap: wrap;
+    }
+    @media (max-width: $layout-breakpoint-mobile) {
+      padding: 80px 10px 0px 43px;
+    }
+    &__photo {
+      position: relative;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      @media (max-width: $layout-breakpoint-tablet) {
+        width: 50%;
+        height: 450px;
+      }
+      @media (max-width: $layout-breakpoint-mobile) {
+        height: 375px;
+      }
+      .photoContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 250px;
+        height: 300px;
+        overflow: hidden;
+        @media (max-width: $layout-breakpoint-medium) {
+          width: 175px;
+          height: 220px;
+        }
+        @media (max-width: $layout-breakpoint-tablet) {
+          width: 200px;
+          height: 250px;
+        }
+        @media (max-width: $layout-breakpoint-mobile) {
+          width: 120px;
+          height: 170px;
+        }
+        .gatsby-image-wrapper {
+          height: 100%;
+        }
+      }
+      .photoLine {
+        background: white;
+        height: 80px;
+        width: 1px;
+        margin-bottom: 15px;
+        @media (max-width: $layout-breakpoint-tablet) {
+          height: 50px;
+        }
+      }
+      .photoName {
+        font-size: 1.5rem;
+        @media (max-width: $layout-breakpoint-mobile) {
+          font-size: 1.25rem;
+        }
+      }
+      &:nth-child(1) {
+        top: -65px;
+        @media (max-width: $layout-breakpoint-tablet) {
+          top: -25px;
+        }
+      }
+      &:nth-child(2) {
+        top: 15px;
+        @media (max-width: $layout-breakpoint-tablet) {
+          top: 25px;
+        }
+      }
+      &:nth-child(3) {
+        top: -75px;
+        @media (max-width: $layout-breakpoint-tablet) {
+          top: -15px;
+        }
+      }
+      &:nth-child(4) {
+        top: 5px;
+        @media (max-width: $layout-breakpoint-tablet) {
+          top: 15px;
+        }
+      }
+    }
+  }
+}
