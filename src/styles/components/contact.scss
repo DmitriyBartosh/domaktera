@@ -12,6 +12,19 @@
   padding-left: 30%;
   padding-top: 60px;
   padding-bottom: 120px;
+  @media (max-width: $layout-breakpoint-medium) {
+    padding-left: 20%;
+  }
+  @media (max-width: $layout-breakpoint-tablet) {
+    padding-left: 120px;
+    padding-top: 80px;
+  }
+  @media (max-width: $layout-breakpoint-mobile) {
+    padding-left: 60px;
+    padding-bottom: 90px;
+    flex-direction: column;
+    justify-content: space-between;
+  }
   .line{
     position: absolute;
     bottom: 30px;
@@ -21,6 +34,9 @@
     border-top: 2px solid white;
     border-bottom: 1px solid white;
     opacity: 0.5;
+    @media (max-width: $layout-breakpoint-mobile) {
+      left: 60px;
+    }
   }
   &__left{
     position: relative;
@@ -29,6 +45,12 @@
     flex-direction: column;
     width: 40%;
     padding-right: 30px;
+    @media (max-width: $layout-breakpoint-medium) {
+      width: 50%;
+    }
+    @media (max-width: $layout-breakpoint-mobile) {
+      width: 100%;
+    }
     p{
       line-height: 2rem;
       letter-spacing: 0.5px;
@@ -60,6 +82,13 @@
     justify-content: space-between;
     flex-direction: column;
     width: 60%;
+    padding-right: 80px;
+    @media (max-width: $layout-breakpoint-medium) {
+      width: 50%;
+    }
+    @media (max-width: $layout-breakpoint-mobile) {
+      width: 100%;
+    }
     p{
       line-height: 2rem;
       letter-spacing: 0.5px;

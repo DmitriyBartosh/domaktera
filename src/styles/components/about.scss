@@ -32,10 +32,6 @@
       p {
         font-size: 1.5rem;
         line-height: 1.5rem;
-        @media (max-width: $layout-breakpoint-mobile) {
-          font-size: 1.25rem;
-          line-height: 1.5rem;
-        }
       }
     }
     .rightColumn {
@@ -71,12 +67,7 @@
           right: 25%;
         }
         p {
-          font-size: 1.5rem;
           line-height: 2rem;
-          @media (max-width: $layout-breakpoint-mobile) {
-            font-size: 1.25rem;
-            line-height: 1.5rem;
-          }
         }
         ul {
           li {
@@ -85,8 +76,8 @@
             margin-left: 18px;
             list-style-type: disc;
             @media (max-width: $layout-breakpoint-mobile) {
-              font-size: 1.25rem;
               line-height: 1.75rem;
+              font-size: 1.25rem;
               list-style-type: none;
             }
           }

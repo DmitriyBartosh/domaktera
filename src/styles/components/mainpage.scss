@@ -252,6 +252,13 @@
         height: 120px;
         background: $orange;
         cursor: pointer;
+        transition: height .3s;
+        &.active{
+          height: 50px;
+          @media (max-width: $layout-breakpoint-tablet) {
+            height: 40px;
+          }
+        }
         @media (max-width: $layout-breakpoint-tablet) {
           height: 80px;
         }
@@ -276,8 +283,11 @@
         letter-spacing: 1px;
         font-size: 16px;
         font-weight: 400;
-        transition: all 0.3s;
+        transition: all 0.15s;
         transform-origin: right;
+        &.hide{
+          transform: translateX(100%);
+        }
         @media (max-width: $layout-breakpoint-medium) {
           font-size: 14px;
         }

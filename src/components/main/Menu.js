@@ -1,21 +1,34 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from "gatsby"
 import Contact from '../Contact';
-import { IoMenu } from "react-icons/io5";
+import { IoMenu, IoClose } from "react-icons/io5";
 
 function Menu() {
+  const [hideMenu, setHideMenu] = useState(false)
   const [contact, setContact] = useState(false);
+
+  useEffect(() => {
+    const hideMenu = () => {
+      if(window.scrollY >= 10){
+        setHideMenu(true);
+      }
+      else{
+        setHideMenu(false);
+      }
+    }
+
+    window.addEventListener('scroll', hideMenu)
+  }, [])
   return (
   <>
-    <nav className="menu">
-      <div className="menu__button" onClick={() => {setContact(contact ? false : true)}}>
-        <IoMenu />
+    <nav className={hideMenu ? "menu hide" : "menu"}>
+      <div className={hideMenu ? "menu__button active" : "menu__button"} onClick={() => {setContact(contact ? false : true)}}>
+        {contact ? <IoClose /> : <IoMenu />}
       </div>
-      <Link to="/events" className="menu__events" style={contact ? {transform: 'translateX(100%)'} : null}>все события</Link>
+      <Link to="/events" className={hideMenu ? "menu__events hide" : "menu__events"} style={contact ? {transform: 'translateX(100%)'} : null}>все события</Link>
     </nav>
-    {contact && (
-      <Contact />
-    )}
+    
+    <Contact isVisible={contact}/>
   </>
   )
 }
