@@ -1,0 +1,89 @@
+.personPage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 120px 1fr 2fr 2fr;
+  padding-right: 75px;
+  padding-top: 25px;
+  padding-bottom: 50px;
+  @media (max-width: $layout-breakpoint-tablet) {
+    grid-template-columns: 1fr;
+    padding-left: 80px;
+    padding-right: 50px;
+    padding-top: 0px;
+  }
+  @media (max-width: $layout-breakpoint-mobile) {
+    padding-left: 60px;
+    padding-right: 15px;
+    padding-bottom: 30px;
+  }
+  &__name {
+    padding-right: 50px;
+    @media (max-width: $layout-breakpoint-tablet) {
+      margin-top: 15px;
+      margin-bottom: 20px;
+      padding-right: 0px;
+    }
+    @media (max-width: $layout-breakpoint-mobile) {
+      margin-top: 20px;
+    }
+  }
+  &__description {
+    padding-right: 50px;
+    @media (max-width: $layout-breakpoint-tablet) {
+      padding-right: 0px;
+    }
+    p {
+      margin: 10px 0px;
+      line-height: 1.6rem;
+    }
+  }
+  &__portfolio {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    @media (max-width: $layout-breakpoint-tablet) {
+      display: grid;
+      grid-template-columns: 1fr;
+      margin-top: 30px;
+    }
+    .awards {
+      margin-bottom: 20px;
+      @media (max-width: $layout-breakpoint-tablet) {
+        margin-top: 20px;
+      }
+      p {
+        margin: 5px 0px;
+        line-height: 1.6rem;
+      }
+    }
+    .works {
+      margin-bottom: 30px;
+      @media (max-width: $layout-breakpoint-tablet) {
+        margin-bottom: 20px;
+      }
+      p {
+        margin: 5px 0px;
+        line-height: 1.6rem;
+      }
+    }
+    .photo {
+      max-width: 50%;
+      @media (max-width: $layout-breakpoint-tablet) {
+        grid-area: 1/1/2/2;
+      }
+      @media (max-width: $layout-breakpoint-mobile) {
+        max-width: 80%;
+      }
+    }
+    .caption {
+      max-width: 50%;
+      margin-top: 10px;
+      @media (max-width: $layout-breakpoint-tablet) {
+        grid-area: 2/1/3/2;
+      }
+      @media (max-width: $layout-breakpoint-mobile) {
+        max-width: 100%;
+      }
+    }
+  }
+}

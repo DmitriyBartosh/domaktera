@@ -21,16 +21,16 @@ function Contact({ isVisible }) {
 
     function OffsetX(width){
       if(width < 600){
-        return setoffsetX(30);
+        return setoffsetX(10);
       }
       else if(width < 1024){
-        return setoffsetX(50);
+        return setoffsetX(30);
       }
       else if(width < 1440){
-        return setoffsetX(75);
+        return setoffsetX(40);
       }
       else{
-        return setoffsetX(100);
+        return setoffsetX(60);
       }
     }
 
@@ -95,7 +95,7 @@ function Contact({ isVisible }) {
                 transition={{ type: "spring", duration: .3, damping: 40, delay: 0.4 }}
               >
                 <p>Как добраться:</p>
-                <a href="https://yandex.ru/maps/-/CCUiJGTI1D" target="_blank">г. Красноярск, ул. Бограда д. 26</a>
+                <a href="https://yandex.ru/maps/-/CCUiJGTI1D" target="_blank" rel="noreferrer">г. Красноярск, ул. Бограда д. 26</a>
               </motion.div>
               <motion.div className="footer"
                 variants={containerInfo}
@@ -105,7 +105,7 @@ function Contact({ isVisible }) {
               >
                 <motion.p variants={item} custom={offsetX}>ООО "Дом Актёра"</motion.p>
                 <motion.p variants={item} custom={offsetX}>ИНН 24561413551 ОРГН 112412490815</motion.p>
-                <motion.p variants={item} custom={offsetX}>Сайт сделан простыми работягами</motion.p>
+                <motion.p variants={item} custom={offsetX}>Сайт RealArt</motion.p>
               </motion.div>
             </div>
             <motion.div className="line"

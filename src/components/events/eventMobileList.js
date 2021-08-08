@@ -14,9 +14,7 @@ function EventMobileList() {
 
 
   useEffect(() => {
-    let eventDesc = document.querySelector('.eventDescription');
     let posterContainer = document.querySelector('.eventContainer');
-    let eventList = document.querySelector('.eventList');
     let posterBlock = [...document.querySelectorAll('.eventCard')];
     let eventBack = document.querySelector('.eventBack');
     let posterCount = posterContainer.childElementCount;
@@ -107,7 +105,7 @@ function EventMobileList() {
     })
 
 
-  }, [width])
+  }, [width, idChangeDispatch])
 
   return (
     <div className="eventList">

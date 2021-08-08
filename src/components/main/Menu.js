@@ -22,9 +22,9 @@ function Menu() {
   return (
   <>
     <nav className={hideMenu ? "menu hide" : "menu"}>
-      <div className={hideMenu ? "menu__button active" : "menu__button"} onClick={() => {setContact(contact ? false : true)}}>
+      <button className={hideMenu ? "menu__button active" : "menu__button"} onClick={() => {setContact(contact ? false : true)}}>
         {contact ? <IoClose /> : <IoMenu />}
-      </div>
+      </button>
       <Link to="/events" className={hideMenu ? "menu__events hide" : "menu__events"} style={contact ? {transform: 'translateX(100%)'} : null}>все события</Link>
     </nav>
     

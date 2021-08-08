@@ -37,6 +37,14 @@ span {
   }
 }
 
+button{
+  font-size: 1.4rem;
+  @media (max-width: $layout-breakpoint-mobile) {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+  }
+}
+
 a {
   font-weight: 500;
 }

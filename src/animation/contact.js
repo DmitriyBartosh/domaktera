@@ -22,7 +22,7 @@ export const containerPhone = {
   show: {
     opacity: 1,
     transition: {
-      delayChildren: 0.6,
+      delayChildren: 0.3,
       staggerChildren: 0.2
     }
   }
@@ -33,7 +33,7 @@ export const containerLink = {
   show: {
     opacity: 1,
     transition: {
-      delayChildren: 0.8,
+      delayChildren: 0.6,
       staggerChildren: 0.2
     }
   }
@@ -44,7 +44,7 @@ export const containerInfo = {
   show: {
     opacity: 1,
     transition: {
-      delayChildren: 1,
+      delayChildren: 0.8,
       staggerChildren: 0.2
     }
   }

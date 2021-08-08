@@ -8,18 +8,18 @@ function About() {
   const [expanded, setExpanded] = useState(false);
 
   const textabout = useStaticQuery(graphql`
-    {
-      allMarkdownRemark {
-        nodes {
-          id
-          frontmatter {
-            title
-          }
-          html
+  {
+    allMarkdownRemark(sort: {fields: frontmatter___title}) {
+      nodes {
+        id
+        frontmatter {
+          title
         }
+        html
       }
     }
-  `)
+  }
+`)
 
 
   return (
@@ -42,7 +42,7 @@ function About() {
               <p>- {index + 1}.</p>
             </div>
             <div className="rightColumn">
-              <p className="infoTitle pointer" onClick={() => setExpanded(isOpen ? false : index)}>{frontmatter.title}<IoAddOutline style={isOpen ? {transform: 'rotateZ(45deg)'} : {transform: 'rotateZ(0deg)'}}/></p>
+              <button className="infoTitle pointer" onClick={() => setExpanded(isOpen ? false : index)}>{frontmatter.title}<IoAddOutline style={isOpen ? {transform: 'rotateZ(45deg)'} : {transform: 'rotateZ(0deg)'}}/></button>
               <AnimatePresence initial={false}>
                 {isOpen && (
                   <motion.div 

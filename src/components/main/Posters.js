@@ -63,7 +63,7 @@ function Posters() {
                     <p className="nearestEventMonth">{monthName[month]}</p>
                   </div>
                 </div>
-                <GatsbyImage image={imgSrc} alt={poster_image.description} alt="Ближайшее событие в Дом Актёра"/>
+                <GatsbyImage image={imgSrc} alt="Ближайшее событие в Дом Актёра"/>
               </Link>
             )
           }

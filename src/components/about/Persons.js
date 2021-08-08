@@ -1,9 +1,11 @@
 import React from 'react'
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import { getImage, GatsbyImage } from 'gatsby-plugin-image'
+import { IoAddOutline } from "react-icons/io5";
 
 function Persons() {
   const personName = ['Пашнин Андрей', 'Гвоздиков Юрий', 'Дьяконов Валерий', 'Прозоров Николай'];
+  const personLink = ['/pashnin-andrei', '/gvozdikov-yurij', '/dyakonov-valerij', '/prozorov-nikolai']
 
   const photo = useStaticQuery(graphql`
     {
@@ -30,13 +32,14 @@ function Persons() {
 
 
         return (
-          <div className="persons__photo" key={index}>
+          <Link to={personLink[index]} className="persons__photo" key={index}>
             <div className="photoContainer">
               <GatsbyImage image={photoSrc} alt='Фото Дом Актёра' />
             </div>
             <div className="photoLine" />
             <p className="photoName">{personName[index]}</p>
-          </div>
+            <IoAddOutline />
+          </Link>
         )
       })}
     </div>

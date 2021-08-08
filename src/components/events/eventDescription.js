@@ -19,6 +19,9 @@ function EventDescription() {
           if (eventList.id === idPoster) {
             return eventList;
           }
+          else{
+            return null;
+          }
         }).map(eventList => {
           const { date } = eventList;
           const { colorBackground } = eventList;
