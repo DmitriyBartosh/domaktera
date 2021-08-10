@@ -1,7 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useEventData } from './useEventData'
-import { renderRichText } from "gatsby-source-contentful/rich-text"
 import { getImage, GatsbyImage } from 'gatsby-plugin-image'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 import EventLogo from '../Logo'
@@ -17,15 +16,17 @@ function EventDescription() {
       <div className="eventDescription">
         {nodes.filter((eventList) => {
           if (eventList.id === idPoster) {
+            console.log(idPoster)
+            console.log(eventList.id)
             return eventList;
           }
           else{
             return null;
           }
         }).map(eventList => {
-          const { date } = eventList;
-          const { colorBackground } = eventList;
-          const posterImg = getImage(eventList.poster_image);
+          const { date, colorbackground, actors, genre, age, description, posterImage } = eventList.events;
+          const posterImg = getImage(posterImage.localFile.childImageSharp);
+          console.log(colorbackground)
 
           const dateEvent = new Date(date);
           const day = dateEvent.getDate();
@@ -39,19 +40,19 @@ function EventDescription() {
 
           return (
             <>
-              <div className="backgroundDesc" style={{ 'background': `#${colorBackground}` }} />
+              <div className="backgroundDesc" style={{ 'background': colorbackground }} />
               <div className="eventHeader">
                 {width < 1025 ? <EventLogo /> : null}
                 <div className="eventTitle">
                   <h1>{eventList.title}</h1>
-                  <p>{eventList.genre}</p>
+                  <p>{genre}</p>
                 </div>
                 <div className="ticketInfo">
                   <p>Билеты можно приобрести<br />на кассе Дом Актёра</p>
                   <p>Подробности: +7 (900) 444 10-10</p>
                 </div>
                 <div className="ageInfo">
-                  <p>{eventList.age}</p>
+                  <p>{age}</p>
                 </div>
                 <div className="eventInfoMobile">
                   <div className="eventInfoMobile__date">
@@ -70,13 +71,9 @@ function EventDescription() {
               </div>
               <div className="eventInfo">
                 <div className="eventInfo__about">
-                  <div className="textInfo">
-                    {renderRichText(eventList.description)}
-                  </div>
+                  <div className="textInfo" dangerouslySetInnerHTML={{ __html: description }} />
                   <p className="actorsTitle">Актёры:</p>
-                  <div className="actors">{eventList.actors.map(actor => {
-                    return <p>{actor}</p>
-                  })}</div>
+                  <div className="actors"><p>{actors}</p></div>
                   {width > 1025 ?
                     null
                     :

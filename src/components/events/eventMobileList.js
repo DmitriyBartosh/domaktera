@@ -8,6 +8,7 @@ import EventCard from './eventCard'
 
 function EventMobileList() {
   var dateNow = new Date();
+  var indexEvent = 0;
   const { width } = useWindowDimensions();
   const { nodes } = useEventData();
   const idChangeDispatch = useDispatch();
@@ -110,8 +111,9 @@ function EventMobileList() {
   return (
     <div className="eventList">
       <div className="eventContainer">
-        {nodes.map((event, index) => {
-          const { id, title, date, genre, duration } = event;
+        {nodes.map(event => {
+          const { id, title, events } = event;
+          const { date, genre, duration } = events;
 
           if ((Date.parse(date) > Date.parse(dateNow))) {
             const dateEvent = new Date(date);
@@ -124,8 +126,10 @@ function EventMobileList() {
             const monthName = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
             const weekName = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
 
+            indexEvent++;
+
             return (
-              <EventCard day={day < 10 ? '0' + day : '' + day} month={monthName[month]} title={title} key={id} genre={genre} duration={duration} time={time} week={weekName[weekDay]} left={(index) * 100} data={index} id={id} />
+              <EventCard day={day < 10 ? '0' + day : '' + day} month={monthName[month]} title={title} key={id} genre={genre} duration={duration} time={time} week={weekName[weekDay]} left={(indexEvent - 1) * 100} data={indexEvent - 1} id={id} />
             )
           }
           else {

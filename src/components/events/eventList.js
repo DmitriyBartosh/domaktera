@@ -7,10 +7,9 @@ import EventCard from './eventCard'
 
 function EventList() {
   var dateNow = new Date();
-  const { nodes, totalCount } = useEventData();
+  var indexEvent = 0;
+  const { nodes } = useEventData();
   const idChangeDispatch = useDispatch();
-
-  
 
   useEffect(() => {
     let posterContainer = document.querySelector('.eventContainer');
@@ -23,24 +22,24 @@ function EventList() {
     let rounded = 0;
     let roundedChanged = 0;
 
-    const ActiveIdPoster = (id) => {idChangeDispatch(idChange(id))}
-    
+    const ActiveIdPoster = (id) => { idChangeDispatch(idChange(id)) }
+
     ActiveIdPoster(posterBlock[0].id);
 
     const scrollEvent = (e) => {
       speed += e.deltaY * 0.001;
-      if(e.deltaY < 0 && rounded <= 1){
+      if (e.deltaY < 0 && rounded <= 1) {
         attractTo = 0;
         attractMode = true;
       }
-      else if(e.deltaY > 0 && rounded >= posterCount){
+      else if (e.deltaY > 0 && rounded >= posterCount) {
         attractTo = posterCount - 1;
         attractMode = true;
       }
-      else{
+      else {
         attractMode = false;
       }
-    }  
+    }
 
     window.addEventListener('wheel', scrollEvent);
 
@@ -55,20 +54,20 @@ function EventList() {
 
       posterContainer.style.transform = `translate(0, ${-position * 140}px)`;
 
-      if(attractMode){
-        position += -(position - attractTo)*0.2;
+      if (attractMode) {
+        position += -(position - attractTo) * 0.2;
       }
-      else{
+      else {
         position += Math.sign(diff) * Math.pow(Math.abs(diff), 0.7) * 0.025;
         posterContainer.style.transform = `translate(0, ${-position * 140}px)`;
       }
 
-      if(rounded !== roundedChanged && rounded >= 0 && rounded < posterCount){
+      if (rounded !== roundedChanged && rounded >= 0 && rounded < posterCount) {
         roundedChanged = rounded;
         setTimeout(() => {
           var blockActive = posterBlock[rounded];
-          if(rounded >= 0 && rounded < posterCount){
-          ActiveIdPoster(blockActive.id);
+          if (rounded >= 0 && rounded < posterCount) {
+            ActiveIdPoster(blockActive.id);
           }
         }, 200);
       }
@@ -91,13 +90,14 @@ function EventList() {
       window.removeEventListener('wheel', scrollEvent);
     }
 
-  }, [totalCount, idChangeDispatch])
+  }, [idChangeDispatch])
 
   return (
     <div className="eventList">
       <div className="eventContainer">
-        {nodes.map((event, index) => {
-          const { id, title, date, genre, duration } = event;
+        {nodes.map(event => {
+          const { id, title, events } = event;
+          const { date, genre, duration } = events;
 
           if ((Date.parse(date) > Date.parse(dateNow))) {
             const dateEvent = new Date(date);
@@ -110,8 +110,10 @@ function EventList() {
             const monthName = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
             const weekName = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
 
+            indexEvent++;
+
             return (
-              <EventCard day={day < 10 ? '0' + day : '' + day} month={monthName[month]} title={title} key={id} genre={genre} duration={duration} time={time} week={weekName[weekDay]} top={(index) * 140} data={index} id={id} />
+              <EventCard day={day < 10 ? '0' + day : '' + day} month={monthName[month]} title={title} key={id} genre={genre} duration={duration} time={time} week={weekName[weekDay]} top={(indexEvent - 1) * 140} data={indexEvent - 1} id={id} />
             )
           }
           else {

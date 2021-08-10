@@ -1,30 +1,38 @@
 import { useStaticQuery, graphql } from "gatsby"
 
 export const useEventData = () => {
-  const { allContentfulEvents } = useStaticQuery(
-    graphql`
-      query EventData {
-        allContentfulEvents(sort: {fields: date, order: ASC}) {
-          nodes {
-            id
-            title
-            description {
-              raw
+  const { allWpPost } = useStaticQuery(graphql`
+  {
+    allWpPost(sort: {fields: events___date, order: ASC}) {
+      nodes {
+        title
+        id
+        events {
+          description
+          date
+          genre
+          actors
+          age
+          duration
+          colorbackground
+          posterImage {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  quality: 90
+                  placeholder: DOMINANT_COLOR
+                  jpgOptions: {progressive: true}
+                )
+              }
             }
-            date
-            genre
-            actors
-            age
-            duration
-            poster_image {
-              gatsbyImageData(quality: 90, jpegProgressive: true, placeholder: DOMINANT_COLOR)
-            }
-            colorBackground
           }
-          totalCount
         }
       }
-    `)
+      totalCount
+    }
+  }
+`)
 
-  return allContentfulEvents
+  return allWpPost
 }
