@@ -60,9 +60,6 @@ typings/
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 
-# config
-/gatsby-config.js
-
 # next.js build output
 .next
 
