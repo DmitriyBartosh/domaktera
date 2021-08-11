@@ -7,7 +7,7 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: "gatsby-source-wordpress-experimental",
+      resolve: "gatsby-source-wordpress",
       options: {
         url: 'https://domaktera24.ru/csm/graphql',
       },
