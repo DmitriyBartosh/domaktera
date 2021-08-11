@@ -1,8 +1,8 @@
 export const spring = { type: "spring", duration: .3, damping: 40 };
 
 export const PathCircle = {
-  show: (size = 1000) => ({ clipPath: `circle(${size + 200}px at 100% 0px)`, transition: { duration: .6 } }),
-  hidden: { clipPath: `circle(10px at 100% 0px)`, transition: { duration: .4 } },
+  show: (size = 1000) => ({ clipPath: `circle(${size + 300}px at 100% 0px)`, transition: { duration: .8 } }),
+  hidden: { clipPath: `circle(10px at 100% 0px)`, transition: { duration: .6 } },
 }
 
 export const Line = {

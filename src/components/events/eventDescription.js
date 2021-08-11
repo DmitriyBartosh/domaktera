@@ -16,8 +16,6 @@ function EventDescription() {
       <div className="eventDescription">
         {nodes.filter((eventList) => {
           if (eventList.id === idPoster) {
-            console.log(idPoster)
-            console.log(eventList.id)
             return eventList;
           }
           else{
@@ -26,7 +24,6 @@ function EventDescription() {
         }).map(eventList => {
           const { date, colorbackground, actors, genre, age, description, posterImage } = eventList.events;
           const posterImg = getImage(posterImage.localFile.childImageSharp);
-          console.log(colorbackground)
 
           const dateEvent = new Date(date);
           const day = dateEvent.getDate();
@@ -45,11 +42,11 @@ function EventDescription() {
                 {width < 1025 ? <EventLogo /> : null}
                 <div className="eventTitle">
                   <h1>{eventList.title}</h1>
-                  <p>{genre}</p>
+                  <p>// {genre}</p>
                 </div>
                 <div className="ticketInfo">
-                  <p>Билеты можно приобрести<br />на кассе Дом Актёра</p>
-                  <p>Подробности: +7 (900) 444 10-10</p>
+                  <p>Билеты можно приобрести<br />на кассе <a href="https://yandex.ru/maps/-/CCUiJGTI1D" target="_blank" rel="noreferrer">«Дом Актёра»</a></p>
+                  <p>Подробности: <a href="tel:+73912277338">+7 (391) 227-73-38</a></p>
                 </div>
                 <div className="ageInfo">
                   <p>{age}</p>

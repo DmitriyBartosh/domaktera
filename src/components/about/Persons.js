@@ -1,7 +1,6 @@
 import React from 'react'
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { getImage, GatsbyImage } from 'gatsby-plugin-image'
-import { IoAddOutline } from "react-icons/io5";
 
 function Persons() {
   const personName = ['Пашнин Андрей', 'Гвоздиков Юрий', 'Дьяконов Валерий', 'Прозоров Николай'];
@@ -38,7 +37,6 @@ function Persons() {
             </div>
             <div className="photoLine" />
             <p className="photoName">{personName[index]}</p>
-            <IoAddOutline />
           </Link>
         )
       })}

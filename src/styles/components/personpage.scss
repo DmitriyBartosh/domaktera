@@ -18,6 +18,7 @@
   }
   &__name {
     padding-right: 50px;
+    color: $orange;
     @media (max-width: $layout-breakpoint-tablet) {
       margin-top: 15px;
       margin-bottom: 20px;
@@ -32,9 +33,22 @@
     @media (max-width: $layout-breakpoint-tablet) {
       padding-right: 0px;
     }
+    .title{
+      color: rgba($color: white, $alpha: 1);
+      border-bottom: 1px solid white;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+      width: 80%;
+      text-transform: uppercase;
+      font-style: italic;
+    }
     p {
-      margin: 10px 0px;
-      line-height: 1.6rem;
+      color: rgba($color: white, $alpha: 0.8);
+      span{
+        display: inline-block;
+        font-size: 3rem;
+        color: rgba($color: white, $alpha: 1);
+      }
     }
   }
   &__portfolio {
@@ -51,9 +65,18 @@
       @media (max-width: $layout-breakpoint-tablet) {
         margin-top: 20px;
       }
+      .title{
+        color: rgba($color: white, $alpha: 1);
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+        width: 80%;
+        text-transform: uppercase;
+        font-style: italic;
+      }
       p {
         margin: 5px 0px;
         line-height: 1.6rem;
+        color: rgba($color: white, $alpha: 0.8);
       }
     }
     .works {
@@ -61,9 +84,18 @@
       @media (max-width: $layout-breakpoint-tablet) {
         margin-bottom: 20px;
       }
+      .title{
+        color: rgba($color: white, $alpha: 1);
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+        width: 80%;
+        text-transform: uppercase;
+        font-style: italic;
+      }
       p {
         margin: 5px 0px;
         line-height: 1.6rem;
+        color: rgba($color: white, $alpha: 0.8);
       }
     }
     .photo {

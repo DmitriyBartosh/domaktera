@@ -117,6 +117,11 @@
             border: 12px solid transparent;
             border-top: 12px solid rgb(139, 14, 14);
             border-right: 12px solid rgb(139, 14, 14);
+            @media (max-width: $layout-breakpoint-medium) {
+              border: 10px solid transparent;
+              border-top: 10px solid rgb(139, 14, 14);
+              border-right: 10px solid rgb(139, 14, 14);
+            }
             @media (max-width: $layout-breakpoint-tablet) {
               border: 8px solid transparent;
               border-top: 8px solid rgb(139, 14, 14);
@@ -143,10 +148,10 @@
           }
           .month {
             font-family: "Yeseva One";
-            font-size: 2rem;
+            font-size: 1.75rem;
             text-transform: lowercase;
             @media (max-width: $layout-breakpoint-medium) {
-              font-size: 1.5rem;
+              font-size: 1.4rem;
             }
             @media (max-width: $layout-breakpoint-mobile) {
               font-size: 1.25rem;
@@ -157,8 +162,8 @@
               font-size: 1.5rem;
               line-height: 1.75rem;
               @media (max-width: $layout-breakpoint-medium) {
-                font-size: 1rem;
-                line-height: 1.25rem;
+                font-size: 1.25rem;
+                line-height: 1.5rem;
               }
             }
           }
@@ -172,8 +177,7 @@
           padding-left: 15px;
           width: 65%;
           @media (max-width: $layout-breakpoint-medium) {
-            font-size: 1.25rem;
-            line-height: 1.75rem;
+            padding-right: 10px;
           }
           @media (max-width: $layout-breakpoint-tablet) {
             display: none;
@@ -184,17 +188,17 @@
             line-height: 1.75rem;
             text-align: right;
             margin-bottom: 5px;
+            font-weight: 500;
             @media (max-width: $layout-breakpoint-medium) {
-              font-size: 1.25rem;
-              line-height: 1.5rem;
+              font-size: 1.4rem;
+              line-height: 1.4rem;
             }
           }
           p {
-            margin: 2px 0px;
             opacity: 0.9;
             @media (max-width: $layout-breakpoint-medium) {
-              font-size: 1rem;
-              line-height: 1rem;
+              font-size: 1.2rem;
+              line-height: 1.2rem;
             }
           }
         }
@@ -255,6 +259,7 @@
         h1 {
           font-size: 2.5rem;
           line-height: 2.75rem;
+          letter-spacing: 0px;
           @media (max-width: $layout-breakpoint-medium) {
             font-size: 2.25rem;
             line-height: 2.25rem;
@@ -286,15 +291,9 @@
         justify-content: center;
         p {
           text-align: right;
-          margin: 5px;
-          line-height: 1.75rem;
-          letter-spacing: 0.5px;
-          @media (max-width: $layout-breakpoint-medium) {
-            font-size: 1.25rem;
-            line-height: 1.5rem;
-          }
+          margin-bottom: 5px;
           &:nth-child(1) {
-            font-weight: 600;
+            font-weight: 500;
           }
         }
         @media (max-width: $layout-breakpoint-tablet) {
@@ -314,10 +313,9 @@
           justify-content: center;
           height: 55px;
           width: 55px;
-          border: 2px solid white;
+          border: 1px solid white;
           border-radius: 50%;
           @media (max-width: $layout-breakpoint-medium) {
-            border: 1px solid white;
             height: 45px;
             width: 45px;
           }
@@ -326,7 +324,7 @@
           }
         }
         p {
-          font-size: 2rem;
+          font-size: 1.75rem;
           @media (max-width: $layout-breakpoint-medium) {
             font-size: 1.5rem;
           }
@@ -351,14 +349,15 @@
           .day {
             display: flex;
             align-items: center;
-            margin-right: 8px;
+            margin-right: 4px;
             font-family: "Yeseva One";
             @media (max-width: $layout-breakpoint-mobile) {
               margin-right: 4px;
             }
             p {
-              font-size: 4.5rem;
-              line-height: 40px;
+              font-size: 3rem;
+              line-height: 3rem;
+              margin-bottom: 2px;
               @media (max-width: $layout-breakpoint-mobile) {
                 font-size: 2.5rem;
                 line-height: 2.5rem;
@@ -373,8 +372,8 @@
             padding-bottom: 2px;
             height: 100%;
             p {
-              font-size: 1.75rem;
-              line-height: 2rem;
+              font-size: 1.5rem;
+              line-height: 1.5rem;
               text-transform: lowercase;
               margin: 0 2px;
               @media (max-width: $layout-breakpoint-mobile) {
@@ -418,11 +417,14 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        justify-content: center;
-        padding: 50px 0px;
+        justify-content: flex-start;
+        padding: 40px 25px 40px 0px;
         width: 60%;
         max-width: 500px;
         height: 100%;
+        @media (max-width: $layout-breakpoint-medium) and (min-height: 800px) {
+          width: 50%;
+        }
         @media (max-width: $layout-breakpoint-tablet) {
           width: 100%;
           max-width: none;
@@ -434,29 +436,16 @@
           margin-bottom: 170px;
         }
         .textInfo {
-          padding-right: 60px;
           @media (max-width: $layout-breakpoint-tablet) {
             padding: 0px;
           }
           p {
-            font-size: 1.5rem;
-            line-height: 2rem;
-            letter-spacing: 0.5px;
-            margin-bottom: 15px;
-            @media (max-width: $layout-breakpoint-medium) {
-              font-size: 1.25rem;
-              line-height: 1.75rem;
-            }
+            margin-bottom: 8px;
           }
         }
         .actorsTitle {
-          margin-top: 50px;
-          font-size: 1.75rem;
-          line-height: 2rem;
-          @media (max-width: $layout-breakpoint-medium) {
-            font-size: 1.5rem;
-            line-height: 1.75rem;
-          }
+          margin-top: 30px;
+          font-weight: 700;
           @media (max-width: $layout-breakpoint-tablet) {
             margin-top: 20px;
           }
@@ -465,37 +454,28 @@
           display: flex;
           align-items: center;
           flex-wrap: wrap;
-          margin-top: 10px;
-          p {
-            margin-right: 5px;
-            font-size: 1.5rem;
-            line-height: 2rem;
-            @media (max-width: $layout-breakpoint-medium) {
-              font-size: 1.25rem;
-              line-height: 1.75rem;
-            }
-          }
+          margin-top: 8px;
         }
         .ticketInfoMobile {
           margin-top: 30px;
           p {
-            font-size: 1.25rem;
-            line-height: 1.75rem;
-            letter-spacing: 0.5px;
             margin-bottom: 5px;
             &:nth-child(1) {
-              font-weight: 600;
+              font-weight: 500;
             }
           }
         }
       }
       &__poster {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         padding: 40px 10px;
         width: 40%;
         height: 100%;
+        @media (max-width: $layout-breakpoint-medium) and (min-height: 800px) {
+          width: 50%;
+        }
         @media (max-width: $layout-breakpoint-tablet) {
           width: 100%;
           height: 760px;

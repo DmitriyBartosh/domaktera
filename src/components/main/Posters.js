@@ -41,8 +41,10 @@ function Posters() {
         })}
 
         {nodes.map((posters, index) => {
-          const { id, date, poster_image, title, genre } = posters;
-          const imgSrc = getImage(poster_image);
+          const { id, events, title } = posters;
+          const { posterImage, genre, date } = events;
+ 
+          const imgSrc = getImage(posterImage.localFile.childImageSharp);
 
           if ((Date.parse(date) > Date.parse(dateNow)) && index < 1) {
             const dateEvent = new Date(date);

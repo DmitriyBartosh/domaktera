@@ -11,7 +11,7 @@
   &__column {
     display: grid;
     grid-template-columns: 4fr 5fr;
-    padding: 20px;
+    padding-bottom: 20px;
     @media (max-width: $layout-breakpoint-tablet) {
       grid-template-columns: 80px 1fr;
     }
@@ -30,15 +30,14 @@
         padding-right: 15px;
       }
       p {
-        font-size: 1.5rem;
-        line-height: 1.5rem;
+        margin-top: 2px;
       }
     }
     .rightColumn {
       max-width: 600px;
       .infoName {
-        font-size: 1.5rem;
-        line-height: 2rem;
+        margin-top: 2px;
+        font-weight: 700;
         text-transform: uppercase;
         @media (max-width: $layout-breakpoint-mobile) {
           line-height: 1.75rem;
@@ -48,7 +47,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 20px;
+        padding-bottom: 10px;
         svg {
           height: 20px;
           width: 20px;
@@ -65,32 +64,35 @@
           width: 100%;
           cursor: pointer;
           -webkit-tap-highlight-color: transparent;
+          p{
+            display: inline-block;
+            width: 100%;
+          }
         }
       }
       .infoDescription {
         position: relative;
         overflow: hidden;
         @media (max-width: $layout-breakpoint-mobile) {
-          width: 110%;
-          right: 15%;
+          width: calc(100% + 35px);
+          right: 35px;
         }
         p {
-          line-height: 2rem;
-          span{
-            font-weight: 600;
-            letter-spacing: 0.5px;
+          span {
+            font-weight: 700;
           }
         }
         ul {
           li {
-            font-size: 1.5rem;
-            line-height: 2rem;
-            margin-left: 18px;
-            list-style-type: disc;
+            font-size: 1.4rem;
+            line-height: 1.6rem;
+            margin-left: 12px;
+            list-style-type: circle;
+            opacity: 0.8;
             @media (max-width: $layout-breakpoint-mobile) {
-              line-height: 1.5rem;
-              font-size: 1.25rem;
               margin-bottom: 5px;
+              font-size: 1.25rem;
+              line-height: 1.5rem;
             }
           }
         }
@@ -128,8 +130,8 @@
         height: 300px;
         overflow: hidden;
         @media (max-width: $layout-breakpoint-medium) {
-          width: 175px;
-          height: 220px;
+          width: 200px;
+          height: 250px;
         }
         @media (max-width: $layout-breakpoint-tablet) {
           width: 200px;

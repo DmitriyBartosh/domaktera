@@ -7,20 +7,23 @@ function PersonPage(props) {
     <section className="personPage">
       <Logo />
       <div className="personPage__name">
-        <h1>{props.name}</h1>
+        <h1 dangerouslySetInnerHTML={{ __html: props.name }} />
       </div>
       <div className="personPage__description">
+        <p className="title">Краткая биография</p>
         {props.description.map((description, index) => {
-          return <p key={index}>{description}</p>
+          return <p key={index} dangerouslySetInnerHTML={{ __html: description }} />
         })}
       </div>
       <div className="personPage__portfolio">
         <div className="awards">
+          <p className="title">Призы и награды</p>
           {props.awards.map((award, index) => {
             return <p key={index}>{award}</p>
           })}
         </div>
         <div className="works">
+          <p className="title">Театральные работы</p>
           {props.works.map((work, index) => {
             return <p key={index}>{work}</p>
           })}

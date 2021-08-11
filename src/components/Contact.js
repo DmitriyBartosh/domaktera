@@ -1,45 +1,25 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence, MotionConfig } from 'framer-motion'
-import { IoLogoVk, IoLogoInstagram } from "react-icons/io5"
 import useWindowDimensions from "../hooks/useWindowDimensions"
-import { PathCircle, item, Line, containerPhone, containerLink, containerInfo, spring } from "../animation/contact"
+import { PathCircle, spring } from "../animation/contact"
+
 
 function Contact({ isVisible }) {
   const { width, height } = useWindowDimensions();
-  const [offsetX, setoffsetX] = useState(50)
   const [size, setSize] = useState(1000);
 
   useEffect(() => {
     function SizeWindow(width, height) {
-      if(width > height){ 
+      if (width > height) {
         return setSize(width);
       }
-      else{
+      else {
         return setSize(height);
       }
     }
 
-    function OffsetX(width){
-      if(width < 600){
-        return setoffsetX(10);
-      }
-      else if(width < 1024){
-        return setoffsetX(30);
-      }
-      else if(width < 1440){
-        return setoffsetX(40);
-      }
-      else{
-        return setoffsetX(60);
-      }
-    }
-
-    SizeWindow(width, height);
-    OffsetX(width);
-
     window.addEventListener('resize', () => {
       SizeWindow(width, height);
-      OffsetX(width);
     });
 
   }, [width, height])
@@ -56,64 +36,77 @@ function Contact({ isVisible }) {
             custom={size}
             className="contact">
             <div className="contact__left">
-              <motion.p
-                variants={item}
-                initial="hidden"
-                animate="show"
-                exit="hidden"
-                custom={offsetX}
-                transition={{ type: "spring", duration: .3, damping: 40, delay: 0.3 }}
-              >Билеты можно приобрести по адресу "Дом Актёра"
-              </motion.p>
-              <motion.div className="links"
-                variants={containerPhone}
-                initial="hidden"
-                animate="show"
-                exit="hidden"
-              >
-                <motion.p variants={item} custom={offsetX}>Задать вопросы: <a href="tel:+73912277338">+7 (391) 227-73-38</a></motion.p>
-                <motion.p variants={item} custom={offsetX}>Режим работы с 10:00 до 22:00</motion.p>
-                <motion.div
-                  variants={containerLink}
-                  initial="hidden"
-                  animate="show"
-                  exit="hidden" 
-                  className="social">
-                  <motion.p variants={item} custom={offsetX}>Мы в социальных сетях:</motion.p>
-                  <motion.a variants={item} custom={offsetX} href="https://vk.com/dom_aktera_24" target="_blank"><IoLogoVk /> vk.com/dom_aktera_24</motion.a>
-                  <motion.a variants={item} custom={offsetX} href="https://www.instagram.com/dom_aktera_24/" target="_blank"><IoLogoInstagram /> instagram.com/dom_aktera_24</motion.a>
-                </motion.div>
-              </motion.div>
+              <div className="contactTitle">
+                <h1>Дом<br /><span>Актёра</span></h1>
+                <h2>Союз театральных<br />деятелей российской<br />федерации (всероссийское<br />театральное общество)</h2>
+              </div>
+              <div className="develop">
+                <div className="realart">
+                  <p>Над сайтом работала команда <a href="https://realart.studio/" target="_blank" rel="noreferrer">RealArt</a></p>
+                </div>
+                <div className="develop__links">
+                  <div className="design">
+                    <p>Дизайн</p>
+                    <a href="https://www.instagram.com/shmidt__art/" target="_blank" rel="noreferrer">shmidt_art</a>
+                  </div>
+                  <div className="development">
+                    <p>Разработка</p>
+                    <a href="https://www.instagram.com/dm.bartosh/" target="_blank" rel="noreferrer">dm.bartosh</a>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="contact__right">
-              <motion.div className="adress"
-                variants={item}
-                initial="hidden"
-                animate="show"
-                exit="hidden"
-                custom={offsetX}
-                transition={{ type: "spring", duration: .3, damping: 40, delay: 0.4 }}
-              >
-                <p>Как добраться:</p>
-                <a href="https://yandex.ru/maps/-/CCUiJGTI1D" target="_blank" rel="noreferrer">г. Красноярск, ул. Бограда д. 26</a>
-              </motion.div>
-              <motion.div className="footer"
-                variants={containerInfo}
-                initial="hidden"
-                animate="show"
-                exit="hidden"
-              >
-                <motion.p variants={item} custom={offsetX}>ООО "Дом Актёра"</motion.p>
-                <motion.p variants={item} custom={offsetX}>ИНН 24561413551 ОРГН 112412490815</motion.p>
-                <motion.p variants={item} custom={offsetX}>Сайт RealArt</motion.p>
-              </motion.div>
+              <div className="ticket">
+                <p>// Билеты можно приобрести<br />на кассах <a href="https://yandex.ru/maps/-/CCUiJGTI1D" target="_blank" rel="noreferrer">«Дом Актёра»</a></p>
+              </div>
+              <div className="info">
+                <div className="info__block">
+                  <div className="left">
+                    <p>Как добраться?</p>
+                  </div>
+                  <div className="right">
+                    <h2>г. Красноярск, Бограда 26</h2>
+                    <h3>ОСТАНОВКА:<br />Театр Оперы и Балета</h3>
+                    <p>
+                      АВТОБУСЫ: 2, 3, 5, 6, 9, 30, 36, 37, 43, 50, 52, 55, 56, 65, 80, 90, 98<br />
+                      ТРОЛЕЙБУС: 6
+                    </p>
+                  </div>
+                </div>
+                <div className="info__block">
+                  <div className="left">
+                    <p>Мы в соц.сетях</p>
+                  </div>
+                  <div className="right">
+                    <a href="https://vk.com/dom_aktera_24" target="_blank" rel="noreferrer">Вконтакте</a>
+                    <a href="https://www.instagram.com/dom_aktera_24/" target="_blank" rel="noreferrer">Инстаграм</a>
+                    <a href="https://www.facebook.com/domaktera24" target="_blank" rel="noreferrer">Facebook</a>
+                  </div>
+                </div>
+                <div className="info__block">
+                  <div className="left">
+                    <p>Задать вопрос</p>
+                  </div>
+                  <div className="right">
+                    <a href="tel:+73912277338">+7 (391) 227-73-38</a>
+                  </div>
+                </div>
+                <div className="info__block">
+                  <div className="left">
+                    <p>Режим работы</p>
+                  </div>
+                  <div className="right">
+                    <p>10:00 - 22:00</p>
+                  </div>
+                </div>
+              </div>
+              <div className="footer">
+                <p>КРАСНОЯРСКОЕ РЕГИОНАЛЬНОЕ ОТДЕЛЕНИЕ СТД РФ</p>
+                <p>660000, Красноярск, Главпочтамт, аб/ящ 25253</p>
+                <a href="mailto:kostd24@mail.ru" target="_blank" rel="noreferrer">kostd24@mail.ru</a>
+              </div>
             </div>
-            <motion.div className="line"
-              variants={Line}
-              initial="hidden"
-              animate="show"
-              exit="hidden"
-            />
           </motion.div>
         </MotionConfig>
       )}
