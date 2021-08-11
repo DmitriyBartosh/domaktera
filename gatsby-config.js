@@ -2,13 +2,14 @@ module.exports = {
   siteMetadata: {
     title: "Дом Актёра",
     siteUrl: "https://www.domaktera24.ru",
-    description: "Дом актёра описание",
+    description: "СОЮЗ ТЕАТРАЛЬНЫХ ДЕЯТЕЛЕЙ РОССИЙСКОЙ ФЕДЕРАЦИИ (ВСЕРОССИЙСКОЕ ТЕАТРАЛЬНОЕ ОБЩЕСТВО)",
+    author: "@dm.bartosh"
   },
   plugins: [
     {
-      resolve: "gatsby-source-wordpress",
+      resolve: "gatsby-source-wordpress-experimental",
       options: {
-        url: process.env.WPGRAPHQL_URL || `https://domaktera24.ru/csm/graphql`,
+        url: 'https://domaktera24.ru/csm/graphql',
       },
     },
     {
