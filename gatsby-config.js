@@ -10,8 +10,6 @@ module.exports = {
       options: {
         url: "https://domaktera24.ru/csm/graphql",
         protocol: "https",
-        hostingWPCOM: false,
-        useACF: true,
       },
     },
     {
