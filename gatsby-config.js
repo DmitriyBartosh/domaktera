@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: "Дом Актёра",
@@ -7,9 +11,10 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: "gatsby-source-wordpress",
+      resolve: `gatsby-source-contentful`,
       options: {
-        url: process.env.WPGRAPHQL_URL || `https://domaktera24.ru/csm/graphql`,
+        spaceId: process.env.CONTENTFUL_ACCESS_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
     {

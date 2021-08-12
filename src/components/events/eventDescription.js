@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { useEventData } from './useEventData'
 import { getImage, GatsbyImage } from 'gatsby-plugin-image'
+import { renderRichText } from "gatsby-source-contentful/rich-text"
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 import EventLogo from '../Logo'
 
@@ -18,12 +19,12 @@ function EventDescription() {
           if (eventList.id === idPoster) {
             return eventList;
           }
-          else{
+          else {
             return null;
           }
         }).map(eventList => {
-          const { date, colorbackground, actors, genre, age, description, posterImage } = eventList.events;
-          const posterImg = getImage(posterImage.localFile.childImageSharp);
+          const { title, date, colorBackground, actors, genre, age, description, poster_image } = eventList;
+          const posterImg = getImage(poster_image);
 
           const dateEvent = new Date(date);
           const day = dateEvent.getDate();
@@ -37,11 +38,11 @@ function EventDescription() {
 
           return (
             <>
-              <div className="backgroundDesc" style={{ 'background': colorbackground }} />
+              <div className="backgroundDesc" style={{ 'background': `#${colorBackground}` }} />
               <div className="eventHeader">
                 {width < 1025 ? <EventLogo /> : null}
                 <div className="eventTitle">
-                  <h1>{eventList.title}</h1>
+                  <h1>{title}</h1>
                   <p>// {genre}</p>
                 </div>
                 <div className="ticketInfo">
@@ -68,9 +69,13 @@ function EventDescription() {
               </div>
               <div className="eventInfo">
                 <div className="eventInfo__about">
-                  <div className="textInfo" dangerouslySetInnerHTML={{ __html: description }} />
+                  <div className="textInfo">
+                    {renderRichText(description)}
+                  </div>
                   <p className="actorsTitle">Актёры:</p>
-                  <div className="actors"><p>{actors}</p></div>
+                  <div className="actors">{actors.map(actor => {
+                    return <p>{actor}</p>
+                  })}</div>
                   {width > 1025 ?
                     null
                     :

@@ -77,3 +77,6 @@ typings/
 
 # Public
 /public
+
+/.env.development
+/.env.production

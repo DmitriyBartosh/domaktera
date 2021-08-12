@@ -96,8 +96,7 @@ function EventList() {
     <div className="eventList">
       <div className="eventContainer">
         {nodes.map(event => {
-          const { id, title, events } = event;
-          const { date, genre, duration } = events;
+          const { id, title, date, genre, duration } = event;
 
           if ((Date.parse(date) > Date.parse(dateNow))) {
             const dateEvent = new Date(date);
