@@ -1,21 +1,19 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useEventData } from './useEventData'
-import { getImage, GatsbyImage } from 'gatsby-plugin-image'
-import { renderRichText } from "gatsby-source-contentful/rich-text"
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 import EventLogo from '../Logo'
 
 function EventDescription() {
   const idPoster = useSelector((state) => state.posterId.posterId);
-  const { nodes } = useEventData();
+  const { posts } = useEventData();
   const { width } = useWindowDimensions();
 
   return (
     <>
       {width > 1025 ? <EventLogo /> : null}
       <div className="eventDescription">
-        {nodes.filter((eventList) => {
+        {posts.nodes.filter((eventList) => {
           if (eventList.id === idPoster) {
             return eventList;
           }
@@ -23,8 +21,8 @@ function EventDescription() {
             return null;
           }
         }).map(eventList => {
-          const { title, date, colorBackground, actors, genre, age, description, poster_image } = eventList;
-          const posterImg = getImage(poster_image);
+          const { title, id } = eventList;
+          const { date, colorbackground, actors, genre, age, description, posterImage } = eventList.events;
 
           const dateEvent = new Date(date);
           const day = dateEvent.getDate();
@@ -38,7 +36,7 @@ function EventDescription() {
 
           return (
             <>
-              <div className="backgroundDesc" style={{ 'background': `#${colorBackground}` }} />
+              <div className="backgroundDesc" style={{ 'background': colorbackground }} />
               <div className="eventHeader">
                 {width < 1025 ? <EventLogo /> : null}
                 <div className="eventTitle">
@@ -69,13 +67,9 @@ function EventDescription() {
               </div>
               <div className="eventInfo">
                 <div className="eventInfo__about">
-                  <div className="textInfo">
-                    {renderRichText(description)}
-                  </div>
+                  <div className="textInfo" dangerouslySetInnerHTML={{ __html: description }} />
                   <p className="actorsTitle">Актёры:</p>
-                  <div className="actors">{actors.map(actor => {
-                    return <p>{actor}</p>
-                  })}</div>
+                  <div className="actors"><p>{actors}</p></div>
                   {width > 1025 ?
                     null
                     :
@@ -87,7 +81,7 @@ function EventDescription() {
                 </div>
                 <div className="eventInfo__poster">
                   <div className="photo">
-                    <GatsbyImage image={posterImg} alt="Постер" />
+                    <img src={posterImage.sourceUrl} alt="Постер" />
                   </div>
                 </div>
               </div>

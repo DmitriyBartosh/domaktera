@@ -11,18 +11,26 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-source-contentful`,
-      options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `photointro`,
         path: `${__dirname}/src/images/photointro/`,
       },
+    },
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        typeName: "DOMAKTERA",
+        fieldName: "domaktera",
+        url: "https://domaktera24.ru/csm/graphql",
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-graphql-image',
+      options: {
+        schemaName: "DOMAKTERA",
+        imageFieldName: "sourceUrl"
+      }
     },
     {
       resolve: `gatsby-source-filesystem`,
