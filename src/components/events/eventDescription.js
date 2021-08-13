@@ -1,19 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { getImage, GatsbyImage } from 'gatsby-plugin-image'
 import { useEventData } from './useEventData'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 import EventLogo from '../Logo'
 
 function EventDescription() {
   const idPoster = useSelector((state) => state.posterId.posterId);
-  const { posts } = useEventData();
+  const { nodes } = useEventData();
   const { width } = useWindowDimensions();
+
+  useEffect(() => {
+
+  }, [width])
 
   return (
     <>
       {width > 1025 ? <EventLogo /> : null}
       <div className="eventDescription">
-        {posts.nodes.filter((eventList) => {
+        {nodes.filter((eventList) => {
           if (eventList.id === idPoster) {
             return eventList;
           }
@@ -21,8 +26,9 @@ function EventDescription() {
             return null;
           }
         }).map(eventList => {
-          const { title, id } = eventList;
+          const { title } = eventList;
           const { date, colorbackground, actors, genre, age, description, posterImage } = eventList.events;
+          const posterImg = getImage(posterImage.localFile.childImageSharp);
 
           const dateEvent = new Date(date);
           const day = dateEvent.getDate();
@@ -70,18 +76,14 @@ function EventDescription() {
                   <div className="textInfo" dangerouslySetInnerHTML={{ __html: description }} />
                   <p className="actorsTitle">Актёры:</p>
                   <div className="actors"><p>{actors}</p></div>
-                  {width > 1025 ?
-                    null
-                    :
-                    <div className="ticketInfoMobile">
-                      <p>Билеты можно приобрести<br />на кассе Дом Актёра</p>
-                      <p>Подробности: +7 (900) 444 10-10</p>
-                    </div>
-                  }
+                  <div className="ticketInfoMobile">
+                    <p>Билеты можно приобрести<br />на кассе Дом Актёра</p>
+                    <p>Подробности: +7 (900) 444 10-10</p>
+                  </div>
                 </div>
                 <div className="eventInfo__poster">
                   <div className="photo">
-                    <img src={posterImage.sourceUrl} alt="Постер" />
+                    <GatsbyImage image={posterImg} alt="Постер" />
                   </div>
                 </div>
               </div>

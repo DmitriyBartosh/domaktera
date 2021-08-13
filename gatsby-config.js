@@ -18,19 +18,10 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-graphql",
+      resolve: `gatsby-source-wordpress`,
       options: {
-        typeName: "DOMAKTERA",
-        fieldName: "domaktera",
-        url: "https://domaktera24.ru/csm/graphql",
+        url: `https://domaktera24.ru/csm/graphql`,
       },
-    },
-    {
-      resolve: 'gatsby-plugin-graphql-image',
-      options: {
-        schemaName: "DOMAKTERA",
-        imageFieldName: "sourceUrl"
-      }
     },
     {
       resolve: `gatsby-source-filesystem`,

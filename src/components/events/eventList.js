@@ -8,7 +8,7 @@ import EventCard from './eventCard'
 function EventList() {
   var dateNow = new Date();
   var indexEvent = 0;
-  const { posts } = useEventData();
+  const { nodes } = useEventData();
   const idChangeDispatch = useDispatch();
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function EventList() {
 
     const ActiveIdPoster = (id) => { idChangeDispatch(idChange(id)) }
 
-    // ActiveIdPoster(posterBlock[0].id);
+    ActiveIdPoster(posterBlock[0].id);
 
     const scrollEvent = (e) => {
       speed += e.deltaY * 0.001;
@@ -95,7 +95,7 @@ function EventList() {
   return (
     <div className="eventList">
       <div className="eventContainer">
-        {posts.nodes.map(event => {
+        {nodes.map(event => {
           const { id, title } = event;
           const { date, genre, duration } = event.events;
 

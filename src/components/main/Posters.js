@@ -6,7 +6,7 @@ import { useEventData } from '../events/useEventData'
 function Posters() {
   var dateNow = new Date();
   var indexPost = 0;
-  const { posts } = useEventData();
+  const { nodes } = useEventData();
 
   const photo = useStaticQuery(graphql`
     {
@@ -41,10 +41,10 @@ function Posters() {
           )
         })}
 
-        {posts.nodes.map(posters => {
+        {nodes.map(posters => {
           const { id, title } = posters.events;
           const { posterImage, genre, date } = posters.events;
-
+          const posterImg = getImage(posterImage.localFile.childImageSharp);
 
           if ((Date.parse(date) > Date.parse(dateNow)) && indexPost < 1) {
             indexPost++;
@@ -66,7 +66,7 @@ function Posters() {
                     <p className="nearestEventMonth">{monthName[month]}</p>
                   </div>
                 </div>
-                <img src={posterImage.sourceUrl} alt={posterImage.altText}/>
+                <GatsbyImage image={posterImg} alt={posterImage.altText} />
               </Link>
             )
           }

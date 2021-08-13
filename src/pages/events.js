@@ -10,7 +10,7 @@ function Events() {
 
   useEffect(() => {
     
-  }, [])
+  }, [width])
   
   return (
     <Layout blockClass="eventPage">

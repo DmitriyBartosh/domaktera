@@ -10,7 +10,7 @@ function EventMobileList() {
   var dateNow = new Date();
   var indexEvent = 0;
   const { width } = useWindowDimensions();
-  const { posts } = useEventData();
+  const { nodes } = useEventData();
   const idChangeDispatch = useDispatch();
 
 
@@ -111,7 +111,7 @@ function EventMobileList() {
   return (
     <div className="eventList">
       <div className="eventContainer">
-        {posts.nodes.map(event => {
+        {nodes.map(event => {
           const { id, title } = event;
           const { date, genre, duration } = event.events;
 
